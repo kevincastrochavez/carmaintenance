@@ -9,6 +9,4 @@ public class MaintenanceRecord
     public string Component { get; set; } // e.g., "EngineOil", "TransmissionFluid"
 
     public Guid CarId { get; set; }
-    // Navigation property
-    public Car Car { get; set; }
 }
