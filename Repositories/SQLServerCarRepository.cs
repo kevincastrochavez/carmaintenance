@@ -31,4 +31,21 @@ public class SQLServerCarRepository : ICarRepository
         await _context.SaveChangesAsync();
         return car;
     }
+
+    public async Task<Car?> UpdateAsync(Guid id, Car car)
+    {
+        var carToUpdate = await _context.Cars.FirstOrDefaultAsync(c => c.CarId == id);
+        if (carToUpdate == null)
+        {
+            return null;
+        }
+
+        // Update properties
+        carToUpdate.CarName = car.CarName;
+        carToUpdate.CurrentMiles = car.CurrentMiles;
+        carToUpdate.UserId = car.UserId;
+
+        await _context.SaveChangesAsync();
+        return carToUpdate;
+    }
 }
