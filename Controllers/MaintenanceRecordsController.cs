@@ -65,5 +65,31 @@ namespace CarMaintenance.Controllers
 
             return CreatedAtAction(nameof(GetById), new { id = maintenanceRecordDto.MaintenanceRecordId }, maintenanceRecordDto);
         }
+
+        // PUT: api/MaintenanceRecords/5
+        [HttpPut("{id}", Name = "UpdateMaintenanceRecord")]
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateMaintenanceRecordDto updateMaintenanceRecordDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Map DTO to Domain Model
+            var maintenanceRecordModel = _mapper.Map<MaintenanceRecord>(updateMaintenanceRecordDto);
+
+            // Check if maintenanceRecord exists
+            maintenanceRecordModel = await _maintenanceRecordRepository.UpdateAsync(id, maintenanceRecordModel);
+
+            if (maintenanceRecordModel == null)
+            {
+                return NotFound();
+            }
+
+            // Map Domain Model to DTO
+            var maintenanceRecordDto = _mapper.Map<MaintenanceRecordDto>(maintenanceRecordModel);
+
+            return Ok(maintenanceRecordDto);
+        }
     }
 }

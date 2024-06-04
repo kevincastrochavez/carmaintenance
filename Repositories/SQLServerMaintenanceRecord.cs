@@ -28,4 +28,22 @@ public class SQLServerMaintenanceRecord : IMaintenanceRecordRepository
         await _context.SaveChangesAsync();
         return maintenanceRecord;
     }
+
+    public async Task<MaintenanceRecord?> UpdateAsync(Guid id, MaintenanceRecord maintenanceRecord)
+    {
+        var maintenanceRecordToUpdate = await _context.MaintenanceRecords.FirstOrDefaultAsync(m => m.MaintenanceRecordId == id);
+        if (maintenanceRecordToUpdate == null)
+        {
+            return null;
+        }
+
+        // Update properties
+        maintenanceRecordToUpdate.Date = maintenanceRecord.Date;
+        maintenanceRecordToUpdate.Miles = maintenanceRecord.Miles;
+        maintenanceRecordToUpdate.Type = maintenanceRecord.Type;
+        maintenanceRecordToUpdate.Component = maintenanceRecord.Component;
+
+        await _context.SaveChangesAsync();
+        return maintenanceRecordToUpdate;
+    }
 }
