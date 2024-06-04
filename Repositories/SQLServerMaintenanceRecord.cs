@@ -21,4 +21,11 @@ public class SQLServerMaintenanceRecord : IMaintenanceRecordRepository
     {
         return await _context.MaintenanceRecords.FirstOrDefaultAsync(m => m.MaintenanceRecordId == id);
     }
+
+    public async Task<MaintenanceRecord> CreateAsync(MaintenanceRecord maintenanceRecord)
+    {
+        await _context.MaintenanceRecords.AddAsync(maintenanceRecord);
+        await _context.SaveChangesAsync();
+        return maintenanceRecord;
+    }
 }

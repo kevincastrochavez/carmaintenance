@@ -49,5 +49,21 @@ namespace CarMaintenance.Controllers
             var maintenanceRecordDto = _mapper.Map<MaintenanceRecordDto>(maintenanceRecordModel);
             return Ok(maintenanceRecordDto);
         }
+
+        // POST: api/MaintenanceRecords
+        [HttpPost(Name = "CreateMaintenanceRecord")]
+        public async Task<IActionResult> Create([FromBody] AddMaintenanceRecordDto addMaintenanceRecordDto)
+        {
+            //    Map DTO to Domain Model
+            var maintenanceRecordModel = _mapper.Map<MaintenanceRecord>(addMaintenanceRecordDto);
+
+            // Add to db
+            maintenanceRecordModel = await _maintenanceRecordRepository.CreateAsync(maintenanceRecordModel);
+
+            // Map Domain Model to DTO
+            var maintenanceRecordDto = _mapper.Map<MaintenanceRecordDto>(maintenanceRecordModel);
+
+            return CreatedAtAction(nameof(GetById), new { id = maintenanceRecordDto.MaintenanceRecordId }, maintenanceRecordDto);
+        }
     }
 }

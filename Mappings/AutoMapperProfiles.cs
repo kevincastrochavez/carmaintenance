@@ -8,5 +8,6 @@ public class AutoMapperProfiles : Profile
     public AutoMapperProfiles()
     {
         CreateMap<MaintenanceRecord, MaintenanceRecordDto>().ReverseMap();
+        CreateMap<AddMaintenanceRecordDto, MaintenanceRecord>().ReverseMap();
     }
 }
