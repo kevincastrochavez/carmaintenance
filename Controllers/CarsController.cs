@@ -33,7 +33,7 @@ namespace CarMaintenance.Controllers
 
         // GET: api/Cars/5
         [HttpGet("{id}", Name = "GetCar")]
-        public async Task<IActionResult> GetCar(Guid id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var carModel = await _carRepository.GetByIdAsync(id);
 
@@ -45,6 +45,22 @@ namespace CarMaintenance.Controllers
             var carDto = _mapper.Map<CarDto>(carModel);
 
             return Ok(carDto);
+        }
+
+        // POST: api/Cars
+        [HttpPost(Name = "CreateCar")]
+        public async Task<IActionResult> Create([FromBody] AddCarDto addCarDto)
+        {
+            // Map DTO to Domain Model
+            var carModel = _mapper.Map<Car>(addCarDto);
+
+            // Add to db
+            carModel = await _carRepository.CreateAsync(carModel);
+
+            // Map Domain Model to DTO
+            var carDto = _mapper.Map<CarDto>(carModel);
+
+            return CreatedAtAction(nameof(GetById), new { id = carModel.CarId }, carModel);
         }
     }
 }

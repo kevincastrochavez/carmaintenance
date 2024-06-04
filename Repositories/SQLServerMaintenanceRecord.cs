@@ -42,6 +42,7 @@ public class SQLServerMaintenanceRecord : IMaintenanceRecordRepository
         maintenanceRecordToUpdate.Miles = maintenanceRecord.Miles;
         maintenanceRecordToUpdate.Type = maintenanceRecord.Type;
         maintenanceRecordToUpdate.Component = maintenanceRecord.Component;
+        maintenanceRecordToUpdate.CarId = maintenanceRecord.CarId;
 
         await _context.SaveChangesAsync();
         return maintenanceRecordToUpdate;

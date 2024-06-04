@@ -12,5 +12,6 @@ public class AutoMapperProfiles : Profile
         CreateMap<UpdateMaintenanceRecordDto, MaintenanceRecord>().ReverseMap();
 
         CreateMap<Car, CarDto>().ReverseMap();
+        CreateMap<AddCarDto, Car>().ReverseMap();
     }
 }

@@ -24,4 +24,11 @@ public class SQLServerCarRepository : ICarRepository
             .Include(c => c.MaintenanceRecords)
             .FirstOrDefaultAsync(c => c.CarId == id);
     }
+
+    public async Task<Car> CreateAsync(Car car)
+    {
+        await _context.Cars.AddAsync(car);
+        await _context.SaveChangesAsync();
+        return car;
+    }
 }
