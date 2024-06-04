@@ -26,4 +26,18 @@ public class SQLServerUserRepository : IUserRepository
         await _context.SaveChangesAsync();
         return user;
     }
+
+    public async Task<User?> DeleteAsync(string id)
+    {
+        var userToDelete = await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
+        if (userToDelete == null)
+        {
+            return null;
+        }
+
+        // Remove from db
+        _context.Users.Remove(userToDelete);
+        await _context.SaveChangesAsync();
+        return userToDelete;
+    }
 }

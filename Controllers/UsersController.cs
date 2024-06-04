@@ -48,4 +48,18 @@ public class UsersController : ControllerBase
 
         return CreatedAtAction(nameof(GetById), new { id = userDto.UserId }, userDto);
     }
+
+    // DELETE: api/Users/5
+    [HttpDelete("{id}", Name = "DeleteUser")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var userModel = await _userRepository.DeleteAsync(id);
+        if (userModel == null)
+        {
+            return NotFound();
+        }
+
+        var userDto = _mapper.Map<UserDto>(userModel);
+        return Ok(userDto);
+    }
 }
