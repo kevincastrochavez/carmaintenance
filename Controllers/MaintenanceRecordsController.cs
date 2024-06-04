@@ -91,5 +91,19 @@ namespace CarMaintenance.Controllers
 
             return Ok(maintenanceRecordDto);
         }
+
+        // DELETE: api/MaintenanceRecords/5
+        [HttpDelete("{id}", Name = "DeleteMaintenanceRecord")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var maintenanceRecordModel = await _maintenanceRecordRepository.DeleteAsync(id);
+            if (maintenanceRecordModel == null)
+            {
+                return NotFound();
+            }
+
+            var maintenanceRecordDto = _mapper.Map<MaintenanceRecordDto>(maintenanceRecordModel);
+            return Ok(maintenanceRecordDto);
+        }
     }
 }

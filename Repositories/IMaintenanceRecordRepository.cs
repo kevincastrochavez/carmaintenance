@@ -8,4 +8,5 @@ public interface IMaintenanceRecordRepository
     Task<MaintenanceRecord?> GetByIdAsync(Guid id);
     Task<MaintenanceRecord> CreateAsync(MaintenanceRecord maintenanceRecord);
     Task<MaintenanceRecord?> UpdateAsync(Guid id, MaintenanceRecord maintenanceRecord);
+    Task<MaintenanceRecord?> DeleteAsync(Guid id);
 }

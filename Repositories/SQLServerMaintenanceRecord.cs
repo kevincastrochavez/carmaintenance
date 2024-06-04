@@ -46,4 +46,17 @@ public class SQLServerMaintenanceRecord : IMaintenanceRecordRepository
         await _context.SaveChangesAsync();
         return maintenanceRecordToUpdate;
     }
+
+    public async Task<MaintenanceRecord?> DeleteAsync(Guid id)
+    {
+        var maintenanceRecordToDelete = await _context.MaintenanceRecords.FirstOrDefaultAsync(m => m.MaintenanceRecordId == id);
+        if (maintenanceRecordToDelete == null)
+        {
+            return null;
+        }
+        // Remove from db
+        _context.MaintenanceRecords.Remove(maintenanceRecordToDelete);
+        await _context.SaveChangesAsync();
+        return maintenanceRecordToDelete;
+    }
 }
