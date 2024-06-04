@@ -14,5 +14,8 @@ public class AutoMapperProfiles : Profile
         CreateMap<Car, CarDto>().ReverseMap();
         CreateMap<AddCarDto, Car>().ReverseMap();
         CreateMap<UpdateCarDto, Car>().ReverseMap();
+
+        CreateMap<User, UserDto>().ReverseMap();
+        CreateMap<AddUserDto, User>().ReverseMap();
     }
 }
