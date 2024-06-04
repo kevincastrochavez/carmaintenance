@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarMaintenance.Migrations
 {
     [DbContext(typeof(CarsDbContext))]
-    [Migration("20240603191530_AddedMaintenanceRecords")]
-    partial class AddedMaintenanceRecords
+    [Migration("20240604024814_AddedUsers")]
+    partial class AddedUsers
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,40 +38,51 @@ namespace CarMaintenance.Migrations
                     b.Property<int>("CurrentMiles")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("CarId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Cars");
 
                     b.HasData(
                         new
                         {
-                            CarId = new Guid("ed15c113-a7fe-4970-bc82-53ccd2f87ee2"),
+                            CarId = new Guid("83693178-be6c-4d3a-9840-77d0d7b83913"),
                             CarName = "Toyota Camry",
-                            CurrentMiles = 120000
+                            CurrentMiles = 120000,
+                            UserId = "user1"
                         },
                         new
                         {
-                            CarId = new Guid("46f7785e-7780-4f0f-a3b8-3a1ae3d774f3"),
+                            CarId = new Guid("3b60efae-e751-4d4c-a9a5-50e0975499cf"),
                             CarName = "Honda Civic",
-                            CurrentMiles = 90000
+                            CurrentMiles = 90000,
+                            UserId = "user1"
                         },
                         new
                         {
-                            CarId = new Guid("0e117f0a-ffd2-4c3f-b559-43b1c674d4b6"),
+                            CarId = new Guid("e9819b15-3b79-4baa-b6c1-efb5321c8370"),
                             CarName = "Ford Focus",
-                            CurrentMiles = 70000
+                            CurrentMiles = 70000,
+                            UserId = "user2"
                         },
                         new
                         {
-                            CarId = new Guid("40a069c9-5f64-4e15-b26a-17c618fcf687"),
+                            CarId = new Guid("e2dabf2d-6d62-4430-8cbf-30731194def2"),
                             CarName = "Chevrolet Malibu",
-                            CurrentMiles = 50000
+                            CurrentMiles = 50000,
+                            UserId = "user2"
                         },
                         new
                         {
-                            CarId = new Guid("e18ae45a-9924-4e0c-9439-24723a077d22"),
+                            CarId = new Guid("6093c8cb-942c-4fa9-b8d5-bc8fdc3c6212"),
                             CarName = "Nissan Altima",
-                            CurrentMiles = 30000
+                            CurrentMiles = 30000,
+                            UserId = "user2"
                         });
                 });
 
@@ -107,8 +118,8 @@ namespace CarMaintenance.Migrations
                     b.HasData(
                         new
                         {
-                            MaintenanceRecordId = new Guid("331b6b47-1c9b-4898-978d-85a1f5071bfb"),
-                            CarId = new Guid("ed15c113-a7fe-4970-bc82-53ccd2f87ee2"),
+                            MaintenanceRecordId = new Guid("1613d49a-a7ea-4883-80fb-6e9a9a85b5e4"),
+                            CarId = new Guid("83693178-be6c-4d3a-9840-77d0d7b83913"),
                             Component = "EngineOil",
                             Date = new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Miles = 115000,
@@ -116,8 +127,8 @@ namespace CarMaintenance.Migrations
                         },
                         new
                         {
-                            MaintenanceRecordId = new Guid("4ac53a32-1fdf-4119-ad05-288b0e5c07f4"),
-                            CarId = new Guid("ed15c113-a7fe-4970-bc82-53ccd2f87ee2"),
+                            MaintenanceRecordId = new Guid("ae370782-abf1-47b7-9b2a-7a2e7fd4591a"),
+                            CarId = new Guid("83693178-be6c-4d3a-9840-77d0d7b83913"),
                             Component = "TransmissionFluid",
                             Date = new DateTime(2022, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Miles = 118000,
@@ -125,8 +136,8 @@ namespace CarMaintenance.Migrations
                         },
                         new
                         {
-                            MaintenanceRecordId = new Guid("a8c7a5c1-a0b4-43a7-b264-5a0ba697b216"),
-                            CarId = new Guid("46f7785e-7780-4f0f-a3b8-3a1ae3d774f3"),
+                            MaintenanceRecordId = new Guid("f59d94a8-2ecb-460b-ac59-4db634331e0c"),
+                            CarId = new Guid("3b60efae-e751-4d4c-a9a5-50e0975499cf"),
                             Component = "EngineOil",
                             Date = new DateTime(2021, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Miles = 85000,
@@ -134,8 +145,8 @@ namespace CarMaintenance.Migrations
                         },
                         new
                         {
-                            MaintenanceRecordId = new Guid("78670dfa-2355-47c1-bd7a-223acffc3f83"),
-                            CarId = new Guid("46f7785e-7780-4f0f-a3b8-3a1ae3d774f3"),
+                            MaintenanceRecordId = new Guid("c0cba228-84b1-4ac8-9e0f-533cb9481676"),
+                            CarId = new Guid("3b60efae-e751-4d4c-a9a5-50e0975499cf"),
                             Component = "Brakes",
                             Date = new DateTime(2021, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Miles = 88000,
@@ -143,8 +154,8 @@ namespace CarMaintenance.Migrations
                         },
                         new
                         {
-                            MaintenanceRecordId = new Guid("0eba66a6-79f8-433e-bc31-9de8b8aecaf5"),
-                            CarId = new Guid("0e117f0a-ffd2-4c3f-b559-43b1c674d4b6"),
+                            MaintenanceRecordId = new Guid("205ae21d-987c-44c6-87aa-28526aaf5a8e"),
+                            CarId = new Guid("e9819b15-3b79-4baa-b6c1-efb5321c8370"),
                             Component = "EngineOil",
                             Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Miles = 68000,
@@ -152,8 +163,8 @@ namespace CarMaintenance.Migrations
                         },
                         new
                         {
-                            MaintenanceRecordId = new Guid("bd01de31-0c75-451a-bbf7-f252babe2749"),
-                            CarId = new Guid("0e117f0a-ffd2-4c3f-b559-43b1c674d4b6"),
+                            MaintenanceRecordId = new Guid("578d7eca-8221-4f1b-8dfe-9c6996af2e12"),
+                            CarId = new Guid("e9819b15-3b79-4baa-b6c1-efb5321c8370"),
                             Component = "Tires",
                             Date = new DateTime(2023, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Miles = 70000,
@@ -161,8 +172,8 @@ namespace CarMaintenance.Migrations
                         },
                         new
                         {
-                            MaintenanceRecordId = new Guid("58662f97-b471-4ef0-b903-af115689ecc8"),
-                            CarId = new Guid("40a069c9-5f64-4e15-b26a-17c618fcf687"),
+                            MaintenanceRecordId = new Guid("35fd68cd-ebf4-4807-ac86-ecfb34797a17"),
+                            CarId = new Guid("e2dabf2d-6d62-4430-8cbf-30731194def2"),
                             Component = "EngineOil",
                             Date = new DateTime(2022, 7, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Miles = 45000,
@@ -170,8 +181,8 @@ namespace CarMaintenance.Migrations
                         },
                         new
                         {
-                            MaintenanceRecordId = new Guid("c1821b23-2509-4dd0-bf70-39e5067787be"),
-                            CarId = new Guid("40a069c9-5f64-4e15-b26a-17c618fcf687"),
+                            MaintenanceRecordId = new Guid("65235f73-5590-46c9-9edd-4fa1d957f77e"),
+                            CarId = new Guid("e2dabf2d-6d62-4430-8cbf-30731194def2"),
                             Component = "Battery",
                             Date = new DateTime(2022, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Miles = 47000,
@@ -179,8 +190,8 @@ namespace CarMaintenance.Migrations
                         },
                         new
                         {
-                            MaintenanceRecordId = new Guid("6e44ab04-29ef-4f25-a8ae-b259a5ba4c17"),
-                            CarId = new Guid("e18ae45a-9924-4e0c-9439-24723a077d22"),
+                            MaintenanceRecordId = new Guid("b55b950f-c55a-4a0f-8cb5-9558813e30c3"),
+                            CarId = new Guid("6093c8cb-942c-4fa9-b8d5-bc8fdc3c6212"),
                             Component = "EngineOil",
                             Date = new DateTime(2021, 11, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Miles = 25000,
@@ -188,13 +199,48 @@ namespace CarMaintenance.Migrations
                         },
                         new
                         {
-                            MaintenanceRecordId = new Guid("1d1157fd-d5cc-42fe-86aa-cc445d483a6b"),
-                            CarId = new Guid("e18ae45a-9924-4e0c-9439-24723a077d22"),
+                            MaintenanceRecordId = new Guid("c6534793-688d-4c59-a2cd-1f445861d06c"),
+                            CarId = new Guid("6093c8cb-942c-4fa9-b8d5-bc8fdc3c6212"),
                             Component = "AirFilter",
                             Date = new DateTime(2022, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Miles = 28000,
                             Type = "Check"
                         });
+                });
+
+            modelBuilder.Entity("CarMaintenance.Models.Domain.User", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "user1",
+                            UserName = "Alice"
+                        },
+                        new
+                        {
+                            UserId = "user2",
+                            UserName = "Bob"
+                        });
+                });
+
+            modelBuilder.Entity("CarMaintenance.Models.Domain.Car", b =>
+                {
+                    b.HasOne("CarMaintenance.Models.Domain.User", null)
+                        .WithMany("Cars")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CarMaintenance.Models.Domain.MaintenanceRecord", b =>
@@ -209,6 +255,11 @@ namespace CarMaintenance.Migrations
             modelBuilder.Entity("CarMaintenance.Models.Domain.Car", b =>
                 {
                     b.Navigation("MaintenanceRecords");
+                });
+
+            modelBuilder.Entity("CarMaintenance.Models.Domain.User", b =>
+                {
+                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }

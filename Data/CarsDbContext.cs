@@ -7,19 +7,27 @@ public class CarsDbContext : DbContext
 {
 
     public CarsDbContext(DbContextOptions<CarsDbContext> options) : base(options) { }
+    public DbSet<User> Users { get; set; }
     public DbSet<Car> Cars { get; set; }
     public DbSet<MaintenanceRecord> MaintenanceRecords { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // Mock Car data
+        var users = new List<User>
+        {
+            new User { UserId = "user1", UserName = "Alice" },
+            new User { UserId = "user2", UserName = "Bob" }
+        };
+
+        // Mock Car data
         var cars = new List<Car>
         {
-            new Car { CarId = Guid.NewGuid(), CarName = "Toyota Camry", CurrentMiles = 120000 },
-            new Car { CarId = Guid.NewGuid(), CarName = "Honda Civic", CurrentMiles = 90000 },
-            new Car { CarId = Guid.NewGuid(), CarName = "Ford Focus", CurrentMiles = 70000 },
-            new Car { CarId = Guid.NewGuid(), CarName = "Chevrolet Malibu", CurrentMiles = 50000 },
-            new Car { CarId = Guid.NewGuid(), CarName = "Nissan Altima", CurrentMiles = 30000 }
+            new Car { CarId = Guid.NewGuid(), CarName = "Toyota Camry", CurrentMiles = 120000, UserId = "user1" },
+            new Car { CarId = Guid.NewGuid(), CarName = "Honda Civic", CurrentMiles = 90000, UserId = "user1" },
+            new Car { CarId = Guid.NewGuid(), CarName = "Ford Focus", CurrentMiles = 70000, UserId = "user2" },
+            new Car { CarId = Guid.NewGuid(), CarName = "Chevrolet Malibu", CurrentMiles = 50000, UserId = "user2" },
+            new Car { CarId = Guid.NewGuid(), CarName = "Nissan Altima", CurrentMiles = 30000, UserId = "user2" }
         };
 
         // Mock MaintenanceRecord data
@@ -37,6 +45,7 @@ public class CarsDbContext : DbContext
             new MaintenanceRecord { MaintenanceRecordId = Guid.NewGuid(), Date = new DateTime(2022, 5, 30), Miles = 28000, Type = "Check", Component = "AirFilter", CarId = cars[4].CarId }
         };
 
+        modelBuilder.Entity<User>().HasData(users);
         modelBuilder.Entity<Car>().HasData(cars);
         modelBuilder.Entity<MaintenanceRecord>().HasData(maintenanceRecords);
     }
