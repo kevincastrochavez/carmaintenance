@@ -251,3 +251,4 @@
 /Users/kevincastro/Desktop/Programs/CarMaintenance/obj/Debug/net8.0/CarMaintenance.pdb
 /Users/kevincastro/Desktop/Programs/CarMaintenance/obj/Debug/net8.0/CarMaintenance.genruntimeconfig.cache
 /Users/kevincastro/Desktop/Programs/CarMaintenance/obj/Debug/net8.0/ref/CarMaintenance.dll
+/Users/kevincastro/Desktop/Programs/CarMaintenance/bin/Debug/net8.0/AutoMapper.dll

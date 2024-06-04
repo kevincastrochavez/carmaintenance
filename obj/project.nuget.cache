@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "qR3RbihGYOoEkFkjvqWZkt9ymcNJCHcdmNPlGUQBUAgeASib53pSexdnVocVtVmFGqkdUmRzrPvjIz+OZQdS0Q==",
+  "dgSpecHash": "ju4+sx7Y3pa2mFaK+Q0gn4zgly3vC7BpQXgF+JV1aA1Lo5uUqD3nBGm2WJ7mk0YLh1PAgax4Y5xEjK39qjI2Fg==",
   "success": true,
   "projectFilePath": "/Users/kevincastro/Desktop/Programs/CarMaintenance/CarMaintenance.csproj",
   "expectedPackageFiles": [
+    "/Users/kevincastro/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/Users/kevincastro/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/Users/kevincastro/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",
     "/Users/kevincastro/.nuget/packages/humanizer/2.14.1/humanizer.2.14.1.nupkg.sha512",

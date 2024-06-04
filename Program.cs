@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using CarMaintenance.Data;
+using CarMaintenance.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<CarsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("CarMaintenanceContext")));
+
+builder.Services.AddScoped<IMaintenanceRecordRepository, SQLServerMaintenanceRecord>();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
