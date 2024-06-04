@@ -60,7 +60,7 @@ namespace CarMaintenance.Controllers
             // Map Domain Model to DTO
             var carDto = _mapper.Map<CarDto>(carModel);
 
-            return CreatedAtAction(nameof(GetById), new { id = carModel.CarId }, carModel);
+            return CreatedAtAction(nameof(GetById), new { id = carModel.CarId }, carDto);
         }
 
         // PUT: api/Cars/5

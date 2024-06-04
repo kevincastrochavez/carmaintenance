@@ -19,4 +19,11 @@ public class SQLServerUserRepository : IUserRepository
             .ThenInclude(c => c.MaintenanceRecords)
             .FirstOrDefaultAsync(u => u.UserId == id);
     }
+
+    public async Task<User> CreateAsync(User user)
+    {
+        await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
+        return user;
+    }
 }
