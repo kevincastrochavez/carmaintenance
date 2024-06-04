@@ -13,6 +13,7 @@ builder.Services.AddDbContext<CarsDbContext>(options => options.UseSqlServer(bui
 // Register repositories
 builder.Services.AddScoped<IMaintenanceRecordRepository, SQLServerMaintenanceRecord>();
 builder.Services.AddScoped<ICarRepository, SQLServerCarRepository>();
+builder.Services.AddScoped<IUserRepository, SQLServerUserRepository>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 

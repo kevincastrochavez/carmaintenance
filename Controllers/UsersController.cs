@@ -1,4 +1,6 @@
+using AutoMapper;
 using CarMaintenance.Data;
+using CarMaintenance.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,19 +10,26 @@ namespace CarMaintenance.Models.Domain;
 [ApiController]
 public class UsersController : ControllerBase
 {
-    private readonly CarsDbContext _context;
-    public UsersController(CarsDbContext context)
+    private readonly IUserRepository _userRepository;
+    private readonly IMapper _mapper;
+    public UsersController(IUserRepository userRepository, IMapper mapper)
     {
-        this._context = context;
+        this._userRepository = userRepository;
+        this._mapper = mapper;
     }
 
-    // GET: api/User
-    [HttpGet("{userId}")]
-    public async Task<ActionResult<User>> GetUser(string userId)
+    // GET: api/Users/5
+    [HttpGet("{id}", Name = "GetUser")]
+    public async Task<IActionResult> GetById(string id)
     {
-        return await _context.Users
-            .Include(u => u.Cars)
-            .ThenInclude(c => c.MaintenanceRecords)
-            .FirstOrDefaultAsync(u => u.UserId == userId);
+        var userModel = await _userRepository.GetByIdAsync(id);
+
+        if (userModel == null)
+        {
+            return NotFound();
+        }
+
+        var userDto = _mapper.Map<UserDto>(userModel);
+        return Ok(userDto);
     }
 }
