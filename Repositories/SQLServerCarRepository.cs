@@ -48,4 +48,18 @@ public class SQLServerCarRepository : ICarRepository
         await _context.SaveChangesAsync();
         return carToUpdate;
     }
+
+    public async Task<Car?> DeleteAsync(Guid id)
+    {
+        var carToDelete = await _context.Cars.FirstOrDefaultAsync(c => c.CarId == id);
+        if (carToDelete == null)
+        {
+            return null;
+        }
+
+        // Remove from db
+        _context.Cars.Remove(carToDelete);
+        await _context.SaveChangesAsync();
+        return carToDelete;
+    }
 }
