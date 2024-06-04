@@ -24,7 +24,7 @@ namespace CarMaintenance.Controllers
 
         // GET: api/MaintenanceRecords
         [HttpGet(Name = "GetAllMaintenanceRecords")]
-        public async Task<ActionResult<IEnumerable<MaintenanceRecord>>> GetMaintenanceRecords()
+        public async Task<IActionResult> GetAllMaintenanceRecords()
         {
             // Get all MaintenanceRecords
             var maintenanceRecordsModel = await _maintenanceRecordRepository.GetAllAsync();
@@ -35,18 +35,19 @@ namespace CarMaintenance.Controllers
             return Ok(maintenanceRecordsDto);
         }
 
-        // // GET: api/MaintenanceRecords/5
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<MaintenanceRecord>> GetMaintenanceRecord(Guid id)
-        // {
-        //     var maintenanceRecord = await _context.MaintenanceRecords.FindAsync(id);
+        // GET: api/MaintenanceRecords/5
+        [HttpGet("{id}", Name = "GetMaintenanceRecord")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var maintenanceRecordModel = await _maintenanceRecordRepository.GetByIdAsync(id);
 
-        //     if (maintenanceRecord == null)
-        //     {
-        //         return NotFound();
-        //     }
+            if (maintenanceRecordModel == null)
+            {
+                return NotFound();
+            }
 
-        //     return maintenanceRecord;
-        // }
+            var maintenanceRecordDto = _mapper.Map<MaintenanceRecordDto>(maintenanceRecordModel);
+            return Ok(maintenanceRecordDto);
+        }
     }
 }

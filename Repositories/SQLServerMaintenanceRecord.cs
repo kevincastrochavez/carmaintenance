@@ -16,4 +16,9 @@ public class SQLServerMaintenanceRecord : IMaintenanceRecordRepository
     {
         return await _context.MaintenanceRecords.ToListAsync();
     }
+
+    public async Task<MaintenanceRecord?> GetByIdAsync(Guid id)
+    {
+        return await _context.MaintenanceRecords.FirstOrDefaultAsync(m => m.MaintenanceRecordId == id);
+    }
 }
