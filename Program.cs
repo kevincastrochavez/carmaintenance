@@ -10,7 +10,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<CarsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("CarMaintenanceContext")));
 
+// Register repositories
 builder.Services.AddScoped<IMaintenanceRecordRepository, SQLServerMaintenanceRecord>();
+builder.Services.AddScoped<ICarRepository, SQLServerCarRepository>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 

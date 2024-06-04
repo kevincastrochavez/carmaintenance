@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CarMaintenance.Data;
 using CarMaintenance.Models.Domain;
+using CarMaintenance.Repositories;
+using AutoMapper;
 
 namespace CarMaintenance.Controllers
 {
@@ -9,18 +11,24 @@ namespace CarMaintenance.Controllers
     [ApiController]
     public class CarsController : ControllerBase
     {
-        private readonly CarsDbContext _context;
+        private readonly ICarRepository _carRepository;
+        private readonly IMapper _mapper;
 
-        public CarsController(CarsDbContext context)
+        public CarsController(ICarRepository carRepository, IMapper mapper)
         {
-            _context = context;
+            this._carRepository = carRepository;
+            this._mapper = mapper;
         }
 
         // GET: api/Cars
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Car>>> GetCars()
+        [HttpGet(Name = "GetAllCars")]
+        public async Task<IActionResult> GetAllCars()
         {
-            return await _context.Cars.Include(c => c.MaintenanceRecords).ToListAsync();
+            var carsModel = await _carRepository.GetAllAsync();
+
+            var carsDto = _mapper.Map<List<CarDto>>(carsModel);
+
+            return Ok(carsDto);
         }
     }
 }
