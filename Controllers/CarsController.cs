@@ -30,5 +30,21 @@ namespace CarMaintenance.Controllers
 
             return Ok(carsDto);
         }
+
+        // GET: api/Cars/5
+        [HttpGet("{id}", Name = "GetCar")]
+        public async Task<IActionResult> GetCar(Guid id)
+        {
+            var carModel = await _carRepository.GetByIdAsync(id);
+
+            if (carModel == null)
+            {
+                return NotFound();
+            }
+
+            var carDto = _mapper.Map<CarDto>(carModel);
+
+            return Ok(carDto);
+        }
     }
 }
