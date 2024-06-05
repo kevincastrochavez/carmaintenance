@@ -18,6 +18,7 @@ builder.Services.AddDbContext<CarsAuthDbContext>(options => options.UseSqlServer
 builder.Services.AddScoped<IMaintenanceRecordRepository, SQLServerMaintenanceRecord>();
 builder.Services.AddScoped<ICarRepository, SQLServerCarRepository>();
 builder.Services.AddScoped<IUserRepository, SQLServerUserRepository>();
+builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 

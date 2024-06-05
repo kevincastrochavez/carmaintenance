@@ -8,9 +8,11 @@ namespace CarMaintenance.Data;
 public class AuthController : ControllerBase
 {
     private readonly UserManager<IdentityUser> _userManager;
-    public AuthController(UserManager<IdentityUser> userManager)
+    private readonly ITokenRepository _tokenRepository;
+    public AuthController(UserManager<IdentityUser> userManager, ITokenRepository tokenRepository)
     {
         this._userManager = userManager;
+        this._tokenRepository = tokenRepository;
     }
 
     // POST: api/Auth/Register
@@ -46,7 +48,15 @@ public class AuthController : ControllerBase
             if (result)
             {
                 // TODO: Create JWT token
-                return Ok("Logged in");
+                var jwtToken = _tokenRepository.CreateJwtToken(userToLogin);
+                var response = new LoginResponseDto
+                {
+                    JwtToken = jwtToken,
+                    UserName = userToLogin.Email,
+                    UserId = userToLogin.Id
+                };
+
+                return Ok(response);
             }
         }
 
