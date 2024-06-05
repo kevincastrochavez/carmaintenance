@@ -32,4 +32,24 @@ public class AuthController : ControllerBase
 
         return BadRequest("Something went wrong with your registration");
     }
+
+    // POST: api/Auth/Login
+    [HttpPost("Login")]
+    public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+    {
+        var userToLogin = await _userManager.FindByEmailAsync(loginDto.Username);
+
+        if (userToLogin != null)
+        {
+            var result = await _userManager.CheckPasswordAsync(userToLogin, loginDto.Password);
+
+            if (result)
+            {
+                // TODO: Create JWT token
+                return Ok("Logged in");
+            }
+        }
+
+        return BadRequest("Something went wrong with your login");
+    }
 }
