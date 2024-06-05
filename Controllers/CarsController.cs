@@ -4,11 +4,13 @@ using CarMaintenance.Data;
 using CarMaintenance.Models.Domain;
 using CarMaintenance.Repositories;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarMaintenance.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class CarsController : ControllerBase
 {
     private readonly ICarRepository _carRepository;
