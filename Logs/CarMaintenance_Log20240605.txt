@@ -1,0 +1,69 @@
+2024-06-05 13:58:11.372 -06:00 [INF] User profile is available. Using '/Users/kevincastro/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-06-05 13:58:11.417 -06:00 [INF] Now listening on: http://localhost:5165
+2024-06-05 13:58:11.418 -06:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-05 13:58:11.418 -06:00 [INF] Hosting environment: Development
+2024-06-05 13:58:11.418 -06:00 [INF] Content root path: /Users/kevincastro/Desktop/Programs/CarMaintenance
+2024-06-05 13:58:11.608 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5165/swagger/index.html - null null
+2024-06-05 13:58:11.643 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5165/swagger/index.html - 200 null text/html;charset=utf-8 35.9895ms
+2024-06-05 13:58:11.650 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5165/_framework/aspnetcore-browser-refresh.js - null null
+2024-06-05 13:58:11.650 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5165/swagger/swagger-ui-standalone-preset.js - null null
+2024-06-05 13:58:11.651 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5165/swagger/swagger-ui.css - null null
+2024-06-05 13:58:11.651 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5165/swagger/swagger-ui-bundle.js - null null
+2024-06-05 13:58:11.653 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5165/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 2.4793ms
+2024-06-05 13:58:11.668 -06:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-06-05 13:58:11.668 -06:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-06-05 13:58:11.668 -06:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-06-05 13:58:11.669 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5165/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 19.1406ms
+2024-06-05 13:58:11.669 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5165/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 18.5943ms
+2024-06-05 13:58:11.669 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5165/swagger/swagger-ui.css - 200 143943 text/css 18.6497ms
+2024-06-05 13:58:12.035 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5165/swagger/v1/swagger.json - null null
+2024-06-05 13:58:12.082 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5165/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 47.3383ms
+2024-06-05 13:58:16.803 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5165/api/MaintenanceRecords - null null
+2024-06-05 13:58:16.808 -06:00 [WRN] Failed to determine the https port for redirect.
+2024-06-05 13:58:16.837 -06:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-06-05 13:58:16.839 -06:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-06-05 13:58:16.839 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5165/api/MaintenanceRecords - 401 0 null 36.5112ms
+2024-06-05 13:58:35.170 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5165/api/Auth/Login - application/json 57
+2024-06-05 13:58:35.180 -06:00 [INF] Executing endpoint 'CarMaintenance.Data.AuthController.Login (CarMaintenance)'
+2024-06-05 13:58:35.202 -06:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(CarMaintenance.Data.LoginDto) on controller CarMaintenance.Data.AuthController (CarMaintenance).
+2024-06-05 13:58:35.659 -06:00 [INF] Executed DbCommand (16ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-06-05 13:58:35.731 -06:00 [INF] Executing OkObjectResult, writing value of type 'CarMaintenance.Data.LoginResponseDto'.
+2024-06-05 13:58:35.732 -06:00 [INF] Executed action CarMaintenance.Data.AuthController.Login (CarMaintenance) in 529.1142ms
+2024-06-05 13:58:35.732 -06:00 [INF] Executed endpoint 'CarMaintenance.Data.AuthController.Login (CarMaintenance)'
+2024-06-05 13:58:35.734 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5165/api/Auth/Login - 200 null application/json; charset=utf-8 564.326ms
+2024-06-05 13:58:54.760 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5165/api/MaintenanceRecords - null null
+2024-06-05 13:58:54.778 -06:00 [INF] Executing endpoint 'CarMaintenance.Controllers.MaintenanceRecordsController.GetAllMaintenanceRecords (CarMaintenance)'
+2024-06-05 13:58:54.779 -06:00 [INF] Route matched with {action = "GetAllMaintenanceRecords", controller = "MaintenanceRecords"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllMaintenanceRecords() on controller CarMaintenance.Controllers.MaintenanceRecordsController (CarMaintenance).
+2024-06-05 13:58:54.887 -06:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[MaintenanceRecordId], [m].[CarId], [m].[Component], [m].[Date], [m].[Miles], [m].[Type]
+FROM [MaintenanceRecords] AS [m]
+2024-06-05 13:58:54.899 -06:00 [INF] Executed action CarMaintenance.Controllers.MaintenanceRecordsController.GetAllMaintenanceRecords (CarMaintenance) in 119.8212ms
+2024-06-05 13:58:54.899 -06:00 [INF] Executed endpoint 'CarMaintenance.Controllers.MaintenanceRecordsController.GetAllMaintenanceRecords (CarMaintenance)'
+2024-06-05 13:58:54.900 -06:00 [ERR] b20e4fa8-6f71-4013-8d6b-6bd7f1cbb834 - Exception: Test Exception
+System.Exception: Test Exception
+   at CarMaintenance.Controllers.MaintenanceRecordsController.GetAllMaintenanceRecords() in /Users/kevincastro/Desktop/Programs/CarMaintenance/Controllers/MaintenanceRecordsController.cs:line 37
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at CarMaintenance.Data.ExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in /Users/kevincastro/Desktop/Programs/CarMaintenance/Middlewares/ExceptionHandlerMiddleware.cs:line 20
+2024-06-05 13:58:54.907 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5165/api/MaintenanceRecords - 500 null application/json; charset=utf-8 147.4994ms
+2024-06-05 13:59:03.218 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5165/swagger/index.html - null null
+2024-06-05 13:59:03.221 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5165/swagger/index.html - 200 null text/html;charset=utf-8 2.2168ms
+2024-06-05 13:59:03.257 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5165/_framework/aspnetcore-browser-refresh.js - null null
+2024-06-05 13:59:03.257 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5165/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.3259ms
+2024-06-05 13:59:03.492 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5165/swagger/v1/swagger.json - null null
+2024-06-05 13:59:03.518 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5165/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.1813ms
+2024-06-05 13:59:06.167 -06:00 [INF] Application is shutting down...

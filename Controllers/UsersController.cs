@@ -14,12 +14,10 @@ public class UsersController : ControllerBase
 {
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
-    private readonly ILogger<UsersController> _logger;
-    public UsersController(IUserRepository userRepository, IMapper mapper, ILogger<UsersController> logger)
+    public UsersController(IUserRepository userRepository, IMapper mapper)
     {
         this._userRepository = userRepository;
         this._mapper = mapper;
-        this._logger = logger;
     }
 
     // GET: api/Users/5
